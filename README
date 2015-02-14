@@ -1,0 +1,51 @@
+Shoutcast2Dropbox - Automatic Shoutcast Station To Dropbox Recorder
+====
+
+This simple script allows to automatically download a specified duration of song collections from different shoutcast stations and then automatically upload them to your dropbox. This can be used to create your own station caching feature with a variety of benefits:
+1. Individual songs instead of one lengthy stream so you can skip forward/backwards among them
+2. Mix up a variety of different stations instead of listening to a single type (e.g. I mix up different types of rock and metal stations with a few latest hits ones thrown in)
+3. No buffering/precious mobile data usage as the Dropbox folder can be synced to phone on wifi (I use Dropsync to schedule syncs on home wifi)
+4. New playlist every day instead of listening to same old stored songs
+
+I created this for myself one day as I was sick of the many issues that plauge streaming music (the ones listed above that are overcome with this script). It may have bugs or may not cover all usecases. I'd love to get feedback to fix the bugs and add more features, so feel free to send in your requests.
+
+Dependencies
+====
+For the script:
+1. Linux Host - (PC/Router/Raspberry Pi/Server etc). Script is written for shell currently but may be adapted for windows. I run it on my router as a cronjob.
+2. streamripper - Opensource Shoutcast recorder program
+3. Dropbox Uploader - For Dropbox sync. Linked as submodule in this git repository.
+
+Usage
+====
+Once above dependencies are satisfied, run the Dropbox Uploader script and do the steps as mentioned to create a folder for syncing the songs to your Dropbox.
+After that, you can run the Shoutcast2Dropbox script as below:
+Shoutcast2Dropbox.sh <Input File for station lists> <Cumulative Duration to record in seconds> <Output Directory path>
+
+Input file should have 1 station url per line. An example file (stations-example.txt) is given in this repository
+Duration in seconds is split up into equal durations for each station. e.g. 3600 seconds (1 hour) given here with a station list of 3 means each station will be recorded for 1200 seconds (or 20 minutes).
+Output directory is where the songs will be captured to.
+
+e.g. ./Shoutcast2Dropbox.sh stations-example.txt 3600 /home/Shantanu/songs
+
+Sync the folder to your phone (See tips section ;) )
+
+Tips
+====
+1. Station urls are not the website urls. You need to get their actual shoutcast stream urls. If they are not present on the website in plain view, generally you can "inspect" the web page or view source to find those out.
+
+2. Use aac streams if possible. They are lower size and higher quality compared to mp3s
+
+3. Instead of running the script manually, set it up as a cron job to run automatically. I set it up to run every day around noon (so that songs get downloaded by the time I reach home)
+
+4. Set it up on a low power device which is always on. e.g. I set it up on my router.
+
+5. For listening to fresh playlists every day while on the road with least effort, setup your phone to automatically sync this. I use "DropSync" and "Tasker" for this. DropSync allows to sync any dropbox folder to the phone and tasker automates this process while taking care of not disturbing your normal phone use. I set it up like this:
+a. Setup DropSync to do only manual sync.
+b. In Tasker, create a profile with this conditions:
+ i) An hourly repeating time event from 10 PM to 6 AM
+ ii) Wifi is connected instead of mobile data
+ iii) Location context is home (from another of my profiles. You can instead choose to use your specific home wifi ssid in above step)
+ iv) Phone is getting charged (so that it doesn't lose power in the middle)
+c. Profile enter task is setup to check a variable if sync is done or not. If not done, then trigger the sync and then set the sync done variable.
+d. Profile exit task is setup to clear the sync done variable for next day.
