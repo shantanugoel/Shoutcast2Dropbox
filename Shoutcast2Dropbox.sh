@@ -45,4 +45,4 @@ rm -rf $output_dir/incomplete
 
 #Upload the new songs
 ls $output_dir
-$DROPBOX_UPLOADER -q -s upload $output_dir `basename $output_dir`
+$DROPBOX_UPLOADER -q -s upload $output_dir .
