@@ -1,4 +1,4 @@
-Shoutcast2Dropbox - Automatic Shoutcast Station To Dropbox Recorder
+Shoutcast2Dropbox - Automatic Shoutcast Stations To Dropbox Recorder
 ====
 
 This simple script allows to automatically download a specified duration of song collections from different shoutcast stations and then automatically upload them to your dropbox. This can be used to create your own station caching feature with a variety of benefits:
@@ -20,7 +20,10 @@ Usage
 ====
 Once above dependencies are satisfied, run the Dropbox Uploader script and do the steps as mentioned to create a folder for syncing the songs to your Dropbox.
 After that, you can run the Shoutcast2Dropbox script as below:
+
+---
 Shoutcast2Dropbox.sh <Input File for station lists> <Cumulative Duration to record in seconds> <Output Directory path>
+---
 
 Input file should have 1 station url per line. An example file (stations-example.txt) is given in this repository
 Duration in seconds is split up into equal durations for each station. e.g. 3600 seconds (1 hour) given here with a station list of 3 means each station will be recorded for 1200 seconds (or 20 minutes).

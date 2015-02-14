@@ -40,7 +40,6 @@ done < $input_file
 #Wait for all jobs to complete
 wait
 
-echo All jobs done
 #Delete the incomplete songs
 rm -rf $output_dir/incomplete
 
