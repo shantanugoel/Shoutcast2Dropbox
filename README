@@ -42,6 +42,8 @@ Tips
 3. Instead of running the script manually, set it up as a cron job to run automatically. I set it up to run every day around noon (so that songs get downloaded by the time I reach home)
 
 4. Set it up on a low power device which is always on. e.g. I set it up on my router.
+  i) I had to install a few extras on my router for this to work (e.g. coreutils-stat pkg from entware). You may need to do so as well
+  ii) I used -k option in script for Dropbox Uploader due to missing ca certificates. You may either choose to install certificates (not a problem on PC but slightly involved on router) or use -k option wherever dropbox uploader commands are used. Didn't check in the k option to avoid security issues by default.
 
 5. For listening to fresh playlists every day while on the road with least effort, setup your phone to automatically sync this. I use "DropSync" and "Tasker" for this. DropSync allows to sync any dropbox folder to the phone and tasker automates this process while taking care of not disturbing your normal phone use. I set it up like this:
 a. Setup DropSync to do only manual sync.
