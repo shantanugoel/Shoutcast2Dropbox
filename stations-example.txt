@@ -1,3 +1,7 @@
 http://RaDio.m69.co:666/128K.aac
 http://provisioning.streamtheworld.com/pls/WZXRFMAAC.pls
 http://listen.djcmedia.com/rockmixxlow
+http://listen.radionomy.com/A-Better-Billboard-Hot-100-Chart-Station
+http://listen.radionomy.com/the-buffalo
+http://listen.radionomy.com/100-hard-rock
+http://listen.radionomy.com/101rockradio
