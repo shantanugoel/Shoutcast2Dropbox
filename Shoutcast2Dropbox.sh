@@ -24,9 +24,9 @@ duration_per_station=$(($total_duration_in_seconds / $num_stations))
 #script starts
 
 #Delete existing songs from last run
+#Dropbox path is relative from sandbox root
+$DROPBOX_UPLOADER -q delete `basename $output_dir`
 #Still playing a little safe and deleting mp3/aac files instead of everything. If your station broadcasts in another format, add that here
-$DROPBOX_UPLOADER -q delete $output_dir/*.aac
-$DROPBOX_UPLOADER -q delete $output_dir/*.mp3
 rm -f $output_dir/*.aac
 rm -f $output_dir/*.mp3
 
@@ -44,4 +44,4 @@ wait
 rm -rf $output_dir/incomplete
 
 #Upload the new songs
-$DROPBOX_UPLOADER -q -s upload $output_dir `basename $output_dir`
+$DROPBOX_UPLOADER -q -s upload $output_dir /
